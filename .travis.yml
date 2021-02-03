@@ -12,12 +12,12 @@ script:
 after_success:
   - docker build -t rosenurkov/multi-client ./client
   - docker build -t rosenurkov/multi-server ./server
-  - docker build -t rosenurkov/multi-nginx ./nginx
   - docker build -t rosenurkov/multi-worker ./worker
+  - docker build -t rosenurkov/multi-nginx ./nginx
   # Login to docker cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push the production images to docker hub
   - docker push rosenurkov/multi-client
   - docker push rosenurkov/multi-server
-  - docker push rosenurkov/multi-nginx
   - docker push rosenurkov/multi-worker
+  - docker push rosenurkov/multi-nginx
